@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -47,5 +48,14 @@ public class PlayerMovement : MonoBehaviour {
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
+	}
+	
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		if(other.collider.tag == "끝점")
+		{
+			SceneManager.LoadScene("Ending");
+			
+		}
 	}
 }
